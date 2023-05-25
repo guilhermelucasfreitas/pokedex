@@ -1,31 +1,16 @@
-import { useEffect, useState } from "react";
-import { getPokemonDetails } from "../../services/getPokemonsDetails";
-import { IPokemonDetails } from "../../interfaces/IPokemonDetails.";
-import { useParams } from "react-router-dom";
-
-interface PokemonQueryParams {
-  name: string;
-}
+import { useLocation } from "react-router-dom";
 
 export const PokemonDetails = () => {
-  const [selectedPokemonDetails, setSelectedPokemonsDetails] = useState<
-    IPokemonDetails | undefined
-  >(undefined);
 
-  const { name } = useParams<Record<string, string | undefined>>();
 
-  useEffect(() => {
-    if (!name) return;
-
-    getPokemonDetails(name).then((response) =>
-      setSelectedPokemonsDetails(response)
-    );
-  }, [name]);
+  const location = useLocation();
+  const pokemon = location.state?.pokemon;
+  console.log(pokemon)
 
   return (
     <>
-      <h1>{name}</h1>
-      <div>{JSON.stringify(selectedPokemonDetails, undefined, 2)}</div>
+      <h1>{pokemon.name}</h1>
+      <div>{JSON.stringify(pokemon, undefined, 2)}</div>
     </>
   );
 };

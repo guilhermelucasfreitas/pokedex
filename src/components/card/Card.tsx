@@ -11,6 +11,8 @@ export const Card = (props: PokedexCardProps) => {
   const { pokemon, onClick } = props;
   const primaryType = pokemon.types[0];
 
+  
+
   return (
     <S.PokemonCard type={primaryType} onClick={onClick}>
       <S.LeftSide>

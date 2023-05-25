@@ -1,3 +1,5 @@
+import { IPokemonDetails } from "./IPokemonDetails.";
+
 export interface IPokemonList {
     sprites: any;
     name: string;

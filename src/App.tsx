@@ -1,22 +1,26 @@
 import "./App.css";
-import { Pokedex } from "./Pages/pokedex/Pokedex";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import { Navbar } from "./components/navbar/NavBar";
 import { BrowserRouter } from "react-router-dom";
 import { Routes } from "./router";
-import { PokemonDetails } from "./Pages/pokemon-details/PokemonDetails";
+import { QueryClient, QueryClientProvider  } from "react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
 
+const queryClient = new QueryClient()
 
 function App() {
   return (
     <>
+    <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Navbar />
           <Routes />
          </BrowserRouter>
       </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 }

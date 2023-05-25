@@ -13,6 +13,9 @@ export async function listPokemons(): Promise<IGetPokemonDetails> {
         sprites: pokemonDetails.sprites,
         id: pokemonDetails.id,
         types: pokemonDetails.types.map((typeInfo) => typeInfo.type.name),
+        abilities: pokemonDetails.abilities.map((abilityInfo) => abilityInfo.ability.name),
+        height: pokemonDetails.height,
+        weight: pokemonDetails.weight
       };
     });
   
